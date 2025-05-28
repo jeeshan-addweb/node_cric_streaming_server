@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RTMP Overlay Controller</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🏏 RTMP Overlay Controller</h1>
+            <div id="status" class="status connecting">Connecting...</div>
+        </header>
+
+        <div class="main-content">
+            <section class="score-section">
+                <h2>📊 Current Score</h2>
+                <div id="currentScore" class="score-display">Loading...</div>
+                <div class="score-meta">
+                    <span id="lastUpdated">Last updated: --</span>
+                    <span id="activeOverlays">Active overlays: 0</span>
+                </div>
+            </section>
+
+            <section class="update-section">
+                <h2>✏️ Update Score</h2>
+                <form id="scoreForm" class="score-form">
+                    <div class="form-group">
+                        <div class="team-group">
+                            <h3>Team 1</h3>
+                            <input type="text" id="team1" placeholder="Team 1 Name" required>
+                            <input type="text" id="team1Score" placeholder="Score (e.g., 245/4)" required>
+                            <input type="text" id="team1Overs" placeholder="Overs (e.g., 38.2)" required>
+                        </div>
+                        <div class="team-group">
+                            <h3>Team 2</h3>
+                            <input type="text" id="team2" placeholder="Team 2 Name" required>
+                            <input type="text" id="team2Score" placeholder="Score (e.g., 198/7)" required>
+                            <input type="text" id="team2Overs" placeholder="Overs (e.g., 35.0)" required>
+                        </div>
+                    </div>
+                    <div class="full-width">
+                        <input type="text" id="status" placeholder="Match Status (e.g., Team 1 batting)" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">🔄 Update Score</button>
+                </form>
+            </section>
+
+            <section class="control-section">
+                <h2>🎬 Overlay Control</h2>
+                <div class="control-group">
+                    <input type="text" id="streamKey" placeholder="Stream Key" value="test">
+                    <div class="button-group">
+                        <button onclick="startOverlay()" class="btn btn-success">▶️ Start Overlay</button>
+                        <button onclick="stopOverlay()" class="btn btn-danger">⏹️ Stop Overlay</button>
+                        <button onclick="getOverlayStatus()" class="btn btn-info">📋 Get Status</button>
+                    </div>
+                </div>
+                
+                <div class="stream-info">
+                    <h3>📺 Stream URLs</h3>
+                    <div class="url-group">
+                        <label>Input Stream (for OBS/streaming software):</label>
+                        <code id="inputUrl">rtmp://localhost:1935/live/test</code>
+                        <button onclick="copyToClipboard('inputUrl')" class="btn btn-copy">📋</button>
+                    </div>
+                    <div class="url-group">
+                        <label>Overlay Stream (with score overlay):</label>
+                        <code id="overlayUrl">rtmp://localhost:1935/overlay/test</code>
+                        <button onclick="copyToClipboard('overlayUrl')" class="btn btn-copy">📋</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="debug-section">
+                <h2>🔧 Debug Tools</h2>
+                <div class="button-group">
+                    <button onclick="testFileWatcher()" class="btn btn-warning">🧪 Test File Watcher</button>
+                    <button onclick="forceRestartOverlays()" class="btn btn-warning">🔄 Force Restart Overlays</button>
+                    <button onclick="getDebugInfo()" class="btn btn-info">🐛 Get Debug Info</button>
+                </div>
+                <div id="debugOutput" class="debug-output"></div>
+            </section>
+        </div>
+
+        <footer>
+            <div class="connection-info">
+                <span id="connectionStatus">●</span>
+                <span>Socket.IO Status</span>
+            </div>
+        </footer>
+    </div>
+
+    <div id="notifications" class="notifications"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>

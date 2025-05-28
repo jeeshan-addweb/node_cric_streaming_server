@@ -1,0 +1,382 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    color: #333;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    color: white;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.status {
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+.status.connecting {
+    background: #ffc107;
+    color: #856404;
+}
+
+.status.connected {
+    background: #28a745;
+    color: white;
+}
+
+.status.disconnected {
+    background: #dc3545;
+    color: white;
+}
+
+.main-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 25px;
+}
+
+@media (min-width: 768px) {
+    .main-content {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .score-section,
+    .update-section {
+        margin-bottom: 0;
+    }
+    
+    .control-section,
+    .debug-section {
+        grid-column: 1 / -1;
+    }
+}
+
+section {
+    background: white;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+section h2 {
+    color: #5a6c7d;
+    margin-bottom: 20px;
+    font-size: 1.4rem;
+    border-bottom: 2px solid #f0f2f5;
+    padding-bottom: 10px;
+}
+
+.score-display {
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 15px;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.score-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+.score-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+@media (min-width: 480px) {
+    .form-group {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.team-group {
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border-left: 4px solid #667eea;
+}
+
+.team-group h3 {
+    color: #495057;
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+
+.full-width {
+    grid-column: 1 / -1;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #e9ecef;
+    border-radius: 6px;
+    font-size: 1rem;
+    margin-bottom: 10px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input[type="text"]:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.btn-success {
+    background: #28a745;
+    color: white;
+}
+
+.btn-danger {
+    background: #dc3545;
+    color: white;
+}
+
+.btn-warning {
+    background: #ffc107;
+    color: #856404;
+}
+
+.btn-info {
+    background: #17a2b8;
+    color: white;
+}
+
+.btn-copy {
+    background: #6c757d;
+    color: white;
+    padding: 8px 12px;
+    font-size: 0.8rem;
+}
+
+.control-group {
+    margin-bottom: 25px;
+}
+
+.button-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.stream-info {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.stream-info h3 {
+    color: #495057;
+    margin-bottom: 15px;
+}
+
+.url-group {
+    margin-bottom: 15px;
+}
+
+.url-group label {
+    display: block;
+    font-weight: 600;
+    color: #495057;
+    margin-bottom: 5px;
+}
+
+.url-group code {
+    background: #e9ecef;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-family: 'Monaco', 'Consolas', monospace;
+    font-size: 0.9rem;
+    display: inline-block;
+    margin-right: 10px;
+    word-break: break-all;
+}
+
+.debug-output {
+    background: #1a1a1a;
+    color: #00ff00;
+    padding: 15px;
+    border-radius: 6px;
+    font-family: 'Monaco', 'Consolas', monospace;
+    font-size: 0.9rem;
+    max-height: 300px;
+    overflow-y: auto;
+    margin-top: 15px;
+    white-space: pre-wrap;
+    display: none;
+}
+
+.debug-output.show {
+    display: block;
+}
+
+footer {
+    text-align: center;
+    margin-top: 30px;
+    padding: 20px;
+}
+
+.connection-info {
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+#connectionStatus {
+    font-size: 1.2rem;
+    transition: color 0.3s;
+}
+
+#connectionStatus.connected {
+    color: #28a745;
+}
+
+#connectionStatus.disconnected {
+    color: #dc3545;
+}
+
+#connectionStatus.connecting {
+    color: #ffc107;
+}
+
+.notifications {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.notification {
+    background: white;
+    border-left: 4px solid #28a745;
+    padding: 15px 20px;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    margin-bottom: 10px;
+    min-width: 300px;
+    animation: slideIn 0.3s ease-out;
+}
+
+.notification.error {
+    border-left-color: #dc3545;
+}
+
+.notification.warning {
+    border-left-color: #ffc107;
+}
+
+.notification.info {
+    border-left-color: #17a2b8;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@media (max-width: 767px) {
+    .container {
+        padding: 15px;
+    }
+    
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    section {
+        padding: 20px;
+    }
+    
+    .button-group {
+        flex-direction: column;
+    }
+    
+    .btn {
+        width: 100%;
+    }
+    
+    .url-group code {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+}

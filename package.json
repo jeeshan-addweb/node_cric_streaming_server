@@ -10,6 +10,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "node-media-server": "^4.0.17"
+    "node-media-server": "^4.0.17",
+    "socket.io": "^4.8.1"
   }
 }

@@ -1,0 +1,19 @@
+{
+  "team1": "India",
+  "team1Score": "295/2",
+  "team1Overs": "41",
+  "team1Color": "#FF6B35",
+  "team2": "Australia",
+  "team2Score": "198/7",
+  "team2Overs": "35.0",
+  "team2Color": "#FFD700",
+  "status": "India batting",
+  "currentBatsman": "Virat Kohli",
+  "currentBowler": "Pat Cummins",
+  "lastBall": "4 (boundary)",
+  "currentRate": "6.42",
+  "requiredRate": "8.15",
+  "venue": "Melbourne Cricket Ground",
+  "matchType": "ODI World Cup",
+  "lastUpdated": "2025-05-28T13:50:38.278Z"
+}
